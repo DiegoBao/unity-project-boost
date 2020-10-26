@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 0.49786, y: 0.70885307, z: 0.49786}
   m_Children: []
   m_Father: {fileID: 928026551027366048}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5689839219604045689
 MeshFilter:
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 7359130385334443749}
   - component: {fileID: 3995246087541513893}
   m_Layer: 0
-  m_Name: Booster Bottom
+  m_Name: SB Booster Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -123,11 +123,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1700717721814816619}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.67, y: 1.108, z: 0}
-  m_LocalScale: {x: 0.43, y: 0.5786436, z: 0.59}
+  m_LocalPosition: {x: 0.50500005, y: -2.1120002, z: 0}
+  m_LocalScale: {x: 0.43000004, y: 0.5786437, z: 0.59}
   m_Children: []
-  m_Father: {fileID: 7748381780664633917}
-  m_RootOrder: 1
+  m_Father: {fileID: 928026551027366048}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8931387030135077300
 MeshFilter:
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 59481794802015235}
   - component: {fileID: 5362807380060823434}
   m_Layer: 0
-  m_Name: Booster Bottom
+  m_Name: SB Booster Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,11 +218,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3675679622564014621}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.642, y: 1.108, z: 0}
-  m_LocalScale: {x: 0.43, y: 0.5786436, z: 0.59}
+  m_LocalPosition: {x: -0.48799998, y: -2.112, z: 0}
+  m_LocalScale: {x: 0.43000004, y: 0.5786437, z: 0.59}
   m_Children: []
-  m_Father: {fileID: 4224845174583722186}
-  m_RootOrder: 1
+  m_Father: {fileID: 928026551027366048}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3111437476229766556
 MeshFilter:
@@ -315,9 +315,11 @@ Transform:
   m_Children:
   - {fileID: 2073468333910741942}
   - {fileID: 4864746847051333683}
-  - {fileID: 7748381780664633917}
-  - {fileID: 4224845174583722186}
   - {fileID: 351357970315475759}
+  - {fileID: 3637483398836917681}
+  - {fileID: 5807535694270188386}
+  - {fileID: 7720114652202735265}
+  - {fileID: 6634770493730947811}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.238}
@@ -416,38 +418,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &5399668291257693617
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7748381780664633917}
-  m_Layer: 0
-  m_Name: Starboard Booster
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7748381780664633917
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5399668291257693617}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.165, y: -3.22, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 3637483398836917681}
-  - {fileID: 5807535694270188386}
-  m_Father: {fileID: 928026551027366048}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6023020025867624780
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,7 +431,7 @@ GameObject:
   - component: {fileID: 8657279603458548821}
   - component: {fileID: 29250618914210005}
   m_Layer: 0
-  m_Name: Booster Top
+  m_Name: SB Booster Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -475,11 +445,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6023020025867624780}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.642, y: 1.558, z: 0}
-  m_LocalScale: {x: 0.42, y: 0.8971067, z: 0.58}
+  m_LocalPosition: {x: -0.48799998, y: -1.6620001, z: 0}
+  m_LocalScale: {x: 0.42000002, y: 0.89710677, z: 0.58}
   m_Children: []
-  m_Father: {fileID: 4224845174583722186}
-  m_RootOrder: 0
+  m_Father: {fileID: 928026551027366048}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7937154186564374055
 MeshFilter:
@@ -651,7 +621,7 @@ GameObject:
   - component: {fileID: 6023100276499377556}
   - component: {fileID: 8484319140560205510}
   m_Layer: 0
-  m_Name: Booster Top
+  m_Name: SB Booster Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -665,11 +635,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8470147182755415425}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.67, y: 1.558, z: 0}
-  m_LocalScale: {x: 0.42, y: 0.8971067, z: 0.58}
+  m_LocalPosition: {x: 0.505, y: -1.6620002, z: 0}
+  m_LocalScale: {x: 0.42000002, y: 0.89710677, z: 0.58}
   m_Children: []
-  m_Father: {fileID: 7748381780664633917}
-  m_RootOrder: 0
+  m_Father: {fileID: 928026551027366048}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2132584909883489554
 MeshFilter:
@@ -733,35 +703,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &9223177812038497782
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4224845174583722186}
-  m_Layer: 0
-  m_Name: Port Booster (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4224845174583722186
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9223177812038497782}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.13, y: -3.22, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 7720114652202735265}
-  - {fileID: 6634770493730947811}
-  m_Father: {fileID: 928026551027366048}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
