@@ -450,8 +450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5261baa2cd723047a44ac75bc434e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rcsThrust: 100
-  mainThrust: 2.5
+  rcsThrust: 250
+  mainThrust: 50
 --- !u!1 &4384387843724105265
 GameObject:
   m_ObjectHideFlags: 0

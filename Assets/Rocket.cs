@@ -1,60 +1,76 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using UnityEngine.Animations;
+using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
 {
-    private Rigidbody rigidBody;
-    private AudioSource audioSource;
-    [SerializeField]
-    private float rcsThrust = 100f;
+    [SerializeField] private float rcsThrust = 100f;
 
     [SerializeField] private float mainThrust = 1f;
-    
+    private AudioSource audioSource;
+    private Rigidbody rigidBody;
+
+    private State state = State.Alive;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        Thrust();
-        Rotate();
+        if (state == State.Alive)
+        {
+            Thrust();
+            Rotate();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (state != State.Alive) return;
+
         switch (collision.gameObject.tag)
         {
             case "Friendly":
-                print("Ok");
                 break;
             case "Fuel":
                 print("Fuel");
                 break;
-            case "Finished":
-                print("Finished");
+            case "Finish":
+                state = State.Transcending;
+                Invoke(nameof(LoadNextLevel), 1f); // TODO: parameterise time
                 break;
             default:
-                print("Dead");
+                state = State.Dying;
+                Invoke(nameof(LoadFirstLevel), 1f);
                 break;
         }
     }
 
+    private void LoadFirstLevel()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    private void LoadNextLevel()
+    {
+        SceneManager.LoadScene(1); // TODO allow for more than 2 levels 
+    }
+
+    private bool isThrusting = false;
+    
     private void Thrust()
     {
-        if (Input.GetKey(KeyCode.Space))
+        isThrusting = Input.GetKey(KeyCode.Space); 
+        if (isThrusting)
         {
-            rigidBody.AddRelativeForce(Vector3.up * mainThrust);
-            if (!audioSource.isPlaying)
-            {
-                audioSource.Play();
-            }
+            // rigidBody.AddRelativeForce(Vector3.up * mainThurst, ForceMode.Acceleration);
+            if (!audioSource.isPlaying) audioSource.Play();
         }
         else
         {
@@ -62,25 +78,35 @@ public class Rocket : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        if (isThrusting)
+        {
+            rigidBody.AddRelativeForce(Vector3.up * mainThrust, ForceMode.Acceleration);
+        }
+    }
+
     private void Rotate()
     {
         rigidBody.freezeRotation = true; // take manual control of rotation
-        
+
         if (Input.GetKey(KeyCode.A))
-        {
             ApplyRotation(true);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            ApplyRotation(false);
-        }
-        
+        else if (Input.GetKey(KeyCode.D)) ApplyRotation(false);
+
         rigidBody.freezeRotation = false;
     }
 
     private void ApplyRotation(bool left)
     {
-        var rotationThisFrame = rcsThrust * Time.deltaTime * (left ? 1 : - 1);
+        float rotationThisFrame = rcsThrust * Time.deltaTime * (left ? 1 : -1);
         transform.Rotate(Vector3.forward * rotationThisFrame);
+    }
+
+    private enum State
+    {
+        Alive,
+        Dying,
+        Transcending,
     }
 }
