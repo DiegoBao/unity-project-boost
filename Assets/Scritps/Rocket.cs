@@ -117,7 +117,7 @@ public class Rocket : MonoBehaviour
     {
         if (isThrusting)
         {
-            rigidBody.AddRelativeForce(Vector3.up * mainThrust, ForceMode.Acceleration);
+            rigidBody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime, ForceMode.Acceleration);
             mainEngineParticles.Play();
         }
         else
