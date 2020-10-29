@@ -606,14 +606,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 441973301, guid: f745133eb2f20c64c879f54b3fa5f69f, type: 3}
-      propertyPath: mainThrust
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 441973301, guid: f745133eb2f20c64c879f54b3fa5f69f, type: 3}
-      propertyPath: rcsThrust
-      value: 250
-      objectReference: {fileID: 0}
     - target: {fileID: 928026551027366048, guid: f745133eb2f20c64c879f54b3fa5f69f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30.33
