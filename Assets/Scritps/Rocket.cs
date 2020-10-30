@@ -22,6 +22,8 @@ public class Rocket : MonoBehaviour
     private bool isThrusting = false;
     private State state = State.Alive;
 
+    private bool isCollisionOn = true;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -37,11 +39,25 @@ public class Rocket : MonoBehaviour
             RespondToThrustInput();
             RespondToRotateInput();
         }
+        if (Debug.isDebugBuild)
+            RespondToDebugInput();
+    }
+
+    private void RespondToDebugInput()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            isCollisionOn = !isCollisionOn;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Alive) return;
+        if (state != State.Alive && !isCollisionOn) return;
 
         switch (collision.gameObject.tag)
         {
