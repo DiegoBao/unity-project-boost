@@ -1,6 +1,4 @@
-﻿using System;
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Rocket : MonoBehaviour
@@ -16,13 +14,13 @@ public class Rocket : MonoBehaviour
     [SerializeField] private ParticleSystem landingParticles;
 
     [SerializeField] private float levelLoadDelay = 2f;
-    
-    private AudioSource audioSource;
-    private Rigidbody rigidBody;
-    private bool isThrusting = false;
-    private State state = State.Alive;
 
-    private bool isCollisionOn = true;
+    private AudioSource audioSource;
+
+    public bool isCollisionOn = true;
+    private bool isThrusting;
+    private Rigidbody rigidBody;
+    private State state = State.Alive;
 
     // Start is called before the first frame update
     private void Start()
@@ -39,25 +37,19 @@ public class Rocket : MonoBehaviour
             RespondToThrustInput();
             RespondToRotateInput();
         }
+
         if (Debug.isDebugBuild)
             RespondToDebugInput();
     }
 
-    private void RespondToDebugInput()
+    private void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            LoadNextLevel();
-        }
-        else if (Input.GetKeyDown(KeyCode.C))
-        {
-            isCollisionOn = !isCollisionOn;
-        }
+        ApplyThrust();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (state != State.Alive && !isCollisionOn) return;
+        if (state != State.Alive || !isCollisionOn) return;
 
         switch (collision.gameObject.tag)
         {
@@ -73,6 +65,13 @@ public class Rocket : MonoBehaviour
                 StartDeathSequence();
                 break;
         }
+    }
+
+    private void RespondToDebugInput()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+            LoadNextLevel();
+        else if (Input.GetKeyDown(KeyCode.C)) isCollisionOn = !isCollisionOn;
     }
 
     private void StartDeathSequence()
@@ -102,9 +101,11 @@ public class Rocket : MonoBehaviour
 
     private void LoadNextLevel()
     {
-        SceneManager.LoadScene(1); // TODO allow for more than 2 levels 
+        int currentIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = (currentIndex + 1) % SceneManager.sceneCountInBuildSettings;  
+        SceneManager.LoadScene(nextSceneIndex); // TODO allow for more than 2 levels 
     }
-    
+
     private void RespondToThrustInput()
     {
         isThrusting = Input.GetKey(KeyCode.Space);
@@ -124,11 +125,6 @@ public class Rocket : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        ApplyThrust();
-    }
-
     private void ApplyThrust()
     {
         if (isThrusting)
@@ -144,13 +140,14 @@ public class Rocket : MonoBehaviour
 
     private void RespondToRotateInput()
     {
-        rigidBody.freezeRotation = true; // take manual control of rotation
+        rigidBody.angularVelocity = Vector3.zero; // remove rotation due to physics
+        // rigidBody.freezeRotation = true; // take manual control of rotation
 
         if (Input.GetKey(KeyCode.A))
             ApplyRotation(true);
         else if (Input.GetKey(KeyCode.D)) ApplyRotation(false);
 
-        rigidBody.freezeRotation = false;
+        // rigidBody.freezeRotation = false;
     }
 
     private void ApplyRotation(bool left)
